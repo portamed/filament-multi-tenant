@@ -94,6 +94,20 @@ function selectOption(string $option): string
     return '.fi-select-input-option:has-text("'.$option.'")';
 }
 
+/**
+ * Unticks a checkbox that the form shows ticked. Playwright's uncheck()
+ * returns at once for a checkbox that is not ticked, and a wire:model
+ * checkbox is not until Livewire has bound it and ticked it from the
+ * component's data, which inside a component that starts late (x-load:
+ * Filament's CheckboxList) happens after the page or the modal shows.
+ * Unticked too early, nothing happens, the binding ticks the box, and the
+ * form saves no change. So: wait for the tick, then take it away.
+ */
+function untick(mixed $page, string $selector): mixed
+{
+    return $page->assertVisible($selector.':checked')->uncheck($selector);
+}
+
 /** The row-actions menu of the table row naming this record. */
 function rowActionsOf(string $name): string
 {
