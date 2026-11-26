@@ -33,17 +33,17 @@ The project needs Laravel Boost (`laravel/boost` ^2.10, set up with `php artisan
 
    ```json
    "repositories": [
-       { "type": "vcs", "url": "https://github.com/usamusa/filament-multi-tenant" }
+       { "type": "vcs", "url": "https://github.com/portamed/filament-multi-tenant" }
    ]
    ```
 
 2. Require it as a dev dependency. It must be a direct dependency; Boost ignores transitive ones.
 
    ```bash
-   composer require --dev usamusa/filament-multi-tenant:dev-main
+   composer require --dev portamed/filament-multi-tenant:dev-main
    ```
 
-3. Enable it in `boost.json` by adding `"usamusa/filament-multi-tenant"` to `packages`. (Alternatively `php artisan boost:update` asks about newly discovered packages when run interactively.)
+3. Enable it in `boost.json` by adding `"portamed/filament-multi-tenant"` to `packages`. (Alternatively `php artisan boost:update` asks about newly discovered packages when run interactively.)
 
 4. Generate the agent files and commit them:
 
@@ -51,14 +51,14 @@ The project needs Laravel Boost (`laravel/boost` ^2.10, set up with `php artisan
    php artisan boost:update --no-discover
    ```
 
-   The guidelines appear in `CLAUDE.md` / `AGENTS.md` as `=== usamusa/filament-multi-tenant/<file> rules ===` sections, and the skills in each agent's skills folder.
+   The guidelines appear in `CLAUDE.md` / `AGENTS.md` as `=== portamed/filament-multi-tenant/<file> rules ===` sections, and the skills in each agent's skills folder.
 
 Optional: with `BOOST_RULES_SCOPED_GUIDELINES=true`, Boost moves the path-scoped parts (the `@scoped` blocks) out of `CLAUDE.md` into `.ai/rules/boost/`, where agents read them when they work on matching files. This applies to all of Boost's guidelines in that project, not just these.
 
 ## Update a project
 
 ```bash
-composer update usamusa/filament-multi-tenant
+composer update portamed/filament-multi-tenant
 php artisan boost:update --no-discover
 ```
 
@@ -76,5 +76,5 @@ Ask the agent to "make that a stack rule"; the `record-stack-rule` skill walks t
 For local work on this package, point a project at the checkout with a path repository instead of the VCS one:
 
 ```json
-{ "type": "path", "url": "../filament-multi-tenant", "options": { "versions": { "usamusa/filament-multi-tenant": "dev-main" } } }
+{ "type": "path", "url": "../filament-multi-tenant", "options": { "versions": { "portamed/filament-multi-tenant": "dev-main" } } }
 ```

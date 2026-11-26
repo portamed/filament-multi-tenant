@@ -1,13 +1,13 @@
 ---
 name: record-stack-rule
-description: "Records a reusable lesson about the Filament 5 / Livewire 4 / stancl/tenancy 3 / spatie-permission / Pest stack in the shared usamusa/filament-multi-tenant package, so every project that uses the stack gets it through Laravel Boost. Use only when the user explicitly asks to record, add, change or remove a stack rule, gotcha or skill (for example \"make that a stack rule\"). Not for decisions that belong to one project."
+description: "Records a reusable lesson about the Filament 5 / Livewire 4 / stancl/tenancy 3 / spatie-permission / Pest stack in the shared portamed/filament-multi-tenant package, so every project that uses the stack gets it through Laravel Boost. Use only when the user explicitly asks to record, add, change or remove a stack rule, gotcha or skill (for example \"make that a stack rule\"). Not for decisions that belong to one project."
 metadata:
   author: usamusa
 ---
 
 # Record a stack rule
 
-The package `usamusa/filament-multi-tenant` is the single source of these rules and skills. Projects receive copies through `php artisan boost:update`; the copies in a project's `vendor/`, `CLAUDE.md`, `AGENTS.md` and agent skill folders are generated and are overwritten on the next update. Never edit them.
+The package `portamed/filament-multi-tenant` is the single source of these rules and skills. Projects receive copies through `php artisan boost:update`; the copies in a project's `vendor/`, `CLAUDE.md`, `AGENTS.md` and agent skill folders are generated and are overwritten on the next update. Never edit them.
 
 ## 1. Is it a stack rule?
 
@@ -33,8 +33,8 @@ A rule that only holds for one major version goes inside an `@if($assist->hasPac
 
 ## 3. Find the package checkout
 
-1. `composer show usamusa/filament-multi-tenant` in the current project shows where it is installed. When the project uses a path repository, that path is the checkout.
-2. Otherwise look for a sibling checkout (for example `~/dev/filament-multi-tenant`) whose `git remote -v` points at `github.com/usamusa/filament-multi-tenant`.
+1. `composer show portamed/filament-multi-tenant` in the current project shows where it is installed. When the project uses a path repository, that path is the checkout.
+2. Otherwise look for a sibling checkout (for example `~/dev/filament-multi-tenant`) whose `git remote -v` points at `github.com/portamed/filament-multi-tenant`.
 3. Otherwise ask the user where it is, or whether to clone it.
 
 Run `git pull` in the checkout before editing.
@@ -52,9 +52,9 @@ Search the guidelines and skills for the topic (for example `grep -rin "rate lim
 
 ## 6. Verify
 
-In a project that uses the package through a path repository (or after pushing and running `composer update usamusa/filament-multi-tenant`), run `php artisan boost:update --no-discover` and check that the rule appears in `CLAUDE.md` under `=== usamusa/filament-multi-tenant/<file> rules ===`. `php artisan boost:install` reports Blade render failures; `boost:update` does not.
+In a project that uses the package through a path repository (or after pushing and running `composer update portamed/filament-multi-tenant`), run `php artisan boost:update --no-discover` and check that the rule appears in `CLAUDE.md` under `=== portamed/filament-multi-tenant/<file> rules ===`. `php artisan boost:install` reports Blade render failures; `boost:update` does not.
 
 ## 7. Commit and roll out
 
 1. Commit in the package checkout with a conventional commit (`docs(rules): …` for guidelines, `feat(skills): …` for skills). Push only when the user says so.
-2. In each project: `composer update usamusa/filament-multi-tenant`, then `php artisan boost:update --no-discover`, and commit the regenerated agent files.
+2. In each project: `composer update portamed/filament-multi-tenant`, then `php artisan boost:update --no-discover`, and commit the regenerated agent files.
